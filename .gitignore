@@ -1,0 +1,11 @@
+/bin/
+*.iml
+/out/
+/.settings
+/.classpath
+/.project
+/target
+/test-output
+/target/
+.factorypath
+.idea/*
