@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import com.leetcode.integer.RomanToInteger13;
+import com.leetcode.string.AddBinary67;
 import com.leetcode.string.LengthOfLastWord58;
+import com.leetcode.string.RepeatedStringMatch686;
+import com.leetcode.string.RepeatedSubstringPattern459;
 
 public class CycleTest {
 
@@ -63,13 +66,14 @@ public class CycleTest {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String line;
         while ((line = in.readLine()) != null) {
-            String s = line;
-
-            int ret = new LengthOfLastWord58().lengthOfLastWord(s);
+            String A = line;
+            String B = in.readLine();
+            String ret = new AddBinary67().addBinary(A, B);
 
             String out = String.valueOf(ret);
 
-            System.out.print(out);
+            System.out.println(out);
+            System.exit(0);
         }
     }
 }
