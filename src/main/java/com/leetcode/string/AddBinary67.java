@@ -71,19 +71,20 @@ public class AddBinary67 {
     }
 
     public String addBinaryFast(String a, String b) {
-        int cnt = 0  , i = a.length()-1 , j = b.length() - 1 ;
+        int cnt = 0, i = a.length() - 1, j = b.length() - 1;
         StringBuilder sb = new StringBuilder();
-        for(;i>=0 && j>=0 ; i--,j--){
-            int tmp = a.charAt(i)-'0'+b.charAt(j)-'0'+ cnt ;
-            cnt = tmp/2;
-            sb.append( tmp%2 );
+        for (; i >= 0 && j >= 0; i--, j--) {
+            int tmp = a.charAt(i) - '0' + b.charAt(j) - '0' + cnt;
+            cnt = tmp / 2;
+            sb.append(tmp % 2);
         }
-        while(i>=0||j>=0){
-            int tmp = (i>=0?(a.charAt(i--)-'0'):(b.charAt(j--)-'0')) + cnt ;
-            cnt = tmp/2;
-            sb.append( tmp%2 );
+        while (i >= 0 || j >= 0) {
+            int tmp = (i >= 0 ? (a.charAt(i--) - '0') : (b.charAt(j--) - '0')) + cnt;
+            cnt = tmp / 2;
+            sb.append(tmp % 2);
         }
-        if(cnt==1)sb.append(1);
+        if (cnt == 1)
+            sb.append(1);
         return sb.reverse().toString();
     }
 }
