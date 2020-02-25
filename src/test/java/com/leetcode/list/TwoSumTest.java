@@ -3,7 +3,9 @@ package com.leetcode.list;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
+import com.leetcode.array.AddArrayFormInteger989;
 import com.leetcode.array.RemoveElement27;
 import com.leetcode.array.TwoSum1;
 
@@ -38,6 +40,16 @@ public class TwoSumTest {
         return "[" + result.substring(0, result.length() - 2) + "]";
     }
 
+    public static String integerArrayToString(List<Integer> nums) {
+
+        String result = "";
+        for (int index = 0; index < nums.size(); index++) {
+            Integer number = nums.get(index);
+            result += number + ", ";
+        }
+        return "[" + result.substring(0, result.length() - 2) + "]";
+    }
+
     public static String integerArrayToString(int[] nums) {
         return integerArrayToString(nums, nums.length);
     }
@@ -50,9 +62,9 @@ public class TwoSumTest {
             line = in.readLine();
             int target = Integer.parseInt(line);
 
-            int ret = new RemoveElement27().removeElement(nums, target);
+            List<Integer> ret = new AddArrayFormInteger989().addToArrayForm(nums, target);
 
-            String out = integerArrayToString(nums,ret);
+            String out = integerArrayToString(ret);
 
             System.out.print(out);
         }
