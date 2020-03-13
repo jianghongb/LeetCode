@@ -64,4 +64,3 @@ public class LongestCommonPrefix14 {
         return prefix;
     }
 }
-}
