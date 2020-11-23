@@ -41,6 +41,9 @@ public class FindDuplicates442 {
 
     /**
      * O(n) time and O(1) space
+     * 思路：
+     *   当扫描到下标为i的数字时，获取当前数字的绝对值n = Math.abs(nums[i]),拿到以n-1为下标的数字，
+     *   如果该下标对应的数字大于0 ，则将其变为赋值；如果下标对应的数字小于零，则表示n为重复数字
      *
      * @param nums
      * @return
