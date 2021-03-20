@@ -26,25 +26,18 @@ public class ReverseLinkedList206 {
         return reverserd;
     }
 
-    ListNode reverseList3(ListNode head) {
+    public ListNode reverseList3(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
 
-        if (null == head) {
-            return head;
+        while(curr != null) {
+            ListNode nxt = curr.next;
+            curr.next = prev; // 翻转箭头
+            prev = curr; //三人行
+            curr = nxt; //三人行
         }
-        ListNode node = head,
-                prev = null,
-                reversed = null;
 
-        while (node != null) {
-            ListNode next = node.next;
-            if (node.next == null) {
-                reversed = node;
-            }
-            node.next = prev;
-            prev = node;
-            node = next;
-        }
-        return reversed;
+        return prev;
     }
 
     public ListNode reverseList2(ListNode head) {
