@@ -85,4 +85,20 @@ public class NaryTreePostorderTraversal590 {
     }
     return result;
   }
+
+  /**
+   *
+   */
+  List<Integer> post = new ArrayList<>();
+  public List<Integer> postorder3(Node root) {
+
+    if (root == null) {
+      return post;
+    }
+    for (Node node: root.children){
+      postorder3(node);
+    }
+    post.add(root.val);
+    return post;
+  }
 }
