@@ -76,10 +76,12 @@ public class BinaryTreeLevelOrderTraversal102 {
     while (q.size() != 0) {
       TreeNode node = q.remove();
       arr.add(node.val);
-      if (node.left != null)
+      if (node.left != null) {
         q.add(node.left);
-      if (node.right != null)
+      }
+      if (node.right != null) {
         q.add(node.right);
+      }
       i++;
       if (i == currLevelSize) {
         res.add(arr);
@@ -89,5 +91,32 @@ public class BinaryTreeLevelOrderTraversal102 {
       }
     }
     return res;
+  }
+
+  public List<List<Integer>> levelOrder3(TreeNode root) {
+    List<List<Integer>> result = new ArrayList<>();
+    Queue<TreeNode> queue = new LinkedList<>();
+
+    if (root == null) {
+      return result;
+    }
+    queue.add(root);
+
+    while (!queue.isEmpty()) {
+      int size = queue.size();
+      List<Integer> level = new ArrayList<>();
+      for (int i = 0; i < size; i++) {
+        TreeNode curr = queue.remove();
+        level.add(curr.val);
+        if (curr.left != null) {
+          queue.add(curr.left);
+        }
+        if (curr.right != null) {
+          queue.add(curr.right);
+        }
+      }
+      result.add(level);
+    }
+    return result;
   }
 }
