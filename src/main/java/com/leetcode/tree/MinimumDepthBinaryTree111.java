@@ -30,7 +30,7 @@ public class MinimumDepthBinaryTree111 {
    */
   int depth = 0;
 
-  public int minDepth(TreeNode root) {
+  public int minDepth3(TreeNode root) {
     if (root == null) {
       return depth;
     }
@@ -80,6 +80,24 @@ public class MinimumDepthBinaryTree111 {
       }
     }
     return depth;
+  }
+
+  /**
+   * 第一个minDepth3的优化版本
+   *
+   * @param root
+   * @return
+   */
+  public int minDepth(TreeNode root) {
+    if (root == null) {
+      return 0;
+    }
+    if (root.left == null) {
+      return minDepth(root.right) + 1;
+    } else if (root.right == null) {
+      return minDepth(root.left) + 1;
+    }
+    return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
   }
 
 }
