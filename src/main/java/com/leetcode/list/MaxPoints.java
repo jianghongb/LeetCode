@@ -99,4 +99,35 @@ public class MaxPoints {
     }//for
     return MAX + 1;//加上当前的这个点
   }
+
+  public int maxPoints3(Point[] points) {
+    if (points == null || points.length == 0)
+      return 0;
+    if (points.length < 3) {
+      return points.length;
+    }
+    int res = 0;
+    for (int i = 1; i < points.length; i++) {
+      int a = points[i].x;
+      int b = points[i].y;
+      int xx = a - points[i - 1].x;
+      int yy = b - points[i - 1].y;
+      int count = 0;
+      if (xx == 0 && yy == 0) {
+        for (int j = 0; j < points.length; j++) {
+          if (points[j].x == a && points[j].y == b) {
+            count++;
+          }
+        }
+      } else {
+        for (int j = 0; j < points.length; j++) {
+          if ((points[j].x - a) * yy == (points[j].y - b) * xx) {
+            count++;
+          }
+        }
+      }
+      res = Math.max(res, count);
+    }
+    return res;
+  }
 }
