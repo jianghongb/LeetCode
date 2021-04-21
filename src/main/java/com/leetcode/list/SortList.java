@@ -1,8 +1,6 @@
 package com.leetcode.list;
 
-
 /**
- *
  * https://www.youtube.com/watch?v=M1TwY0nsTZA 花花酱解析
  * Given the head of a linked list, return the list after sorting it in ascending order.
  *
@@ -22,6 +20,12 @@ package com.leetcode.list;
  */
 public class SortList {
 
+  /**
+   * 思路： 取到list的middle 然后 merge 两个有序list
+   *
+   * @param head
+   * @return
+   */
   public ListNode sortList(ListNode head) {
     if (head == null || head.next == null)
       return head;
@@ -38,12 +42,11 @@ public class SortList {
       if (list1.val < list2.val) {
         tail.next = list1;
         list1 = list1.next;
-        tail = tail.next;
       } else {
         tail.next = list2;
         list2 = list2.next;
-        tail = tail.next;
       }
+      tail = tail.next;
     }
     tail.next = (list1 != null) ? list1 : list2;
     return dummyHead.next;
@@ -65,26 +68,22 @@ public class SortList {
     if (null == head || head.next == null) {
       return head;
     }
-
-    ListNode p = head;
-    ListNode next = head.next;
-    while (next != null) {
-
-      if (next.val < head.val) {
-        ListNode tmp = next.next;
-        head.next = tmp;
-        next.next = head;
-        head = next;
-        next = tmp;
+    ListNode current = head;
+    while (current != null) {
+      ListNode iter = current;
+      ListNode min = iter;
+      while (iter != null) {
+        if (iter.val < min.val) {
+          min = iter;
+        }
+        iter = iter.next;
       }
-      if (next.val >= head.val && head.next != next) {
-        head = head.next;
-      } else {
-        head = next;
-        next = next.next;
-      }
+      int tmp = current.val;
+      current.val = min.val;
+      min.val = tmp;
+      current = current.next;
     }
-    return p;
+    return head;
   }
 
   ListNode tail = new ListNode();
