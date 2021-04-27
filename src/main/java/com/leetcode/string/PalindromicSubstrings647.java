@@ -1,8 +1,5 @@
 package com.leetcode.string;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 /**
@@ -77,6 +74,12 @@ public class PalindromicSubstrings647 {
     return true;
   }
 
+  /**
+   * 動態規劃
+   *
+   * @param s
+   * @return
+   */
   public int countSubstrings(String s) {
     if (null == s || s.length() == 0) {
       return 0;
