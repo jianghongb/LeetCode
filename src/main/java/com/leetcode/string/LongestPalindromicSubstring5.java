@@ -1,5 +1,7 @@
 package com.leetcode.string;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * Given a string s, return the longest palindromic substring in s.
  *
@@ -69,11 +71,9 @@ public class LongestPalindromicSubstring5 {
     for (int i = s.length() - 2; i >= 0; i--) {
       for (int j = i + 1; j < s.length(); j++) {
 
-        if (s.charAt(j) == s.charAt(i))
-          if (dp[i + 1][j - 1] || j - i == 1) {
-
+        if (s.charAt(j) == s.charAt(i) && (dp[i + 1][j - 1] || j - i == 1)) {
             dp[i][j] = true;
-          }
+        }
 
         if (dp[i][j] && j - i > end - start) {
           end = j;
@@ -82,5 +82,11 @@ public class LongestPalindromicSubstring5 {
       }
     }
     return s.substring(start, end + 1);
+  }
+
+  @Test
+  void test() {
+    System.out.println(longestPalindrome("abbac"));
+    // dp = {0,0,1,2}
   }
 }
