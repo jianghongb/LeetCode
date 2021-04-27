@@ -100,5 +100,6 @@ public class PalindromicSubstrings {
   @Test
   void test() {
     System.out.println(minCut("aabc"));
+    // dp = {0,0,1,2}
   }
 }
