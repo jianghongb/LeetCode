@@ -8,7 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
+import org.junit.jupiter.api.Test;
+
 /**
+ * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
  * Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
  *
  * A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
@@ -106,5 +109,10 @@ public class LetterCombinations {
       combinations.add(queue.remove().toString());
     }
     return combinations;
+  }
+
+  @Test
+  void test(){
+    letterCombinations2("23").stream().forEach(item-> System.out.print(item+","));
   }
 }
