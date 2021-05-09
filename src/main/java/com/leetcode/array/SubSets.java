@@ -54,7 +54,9 @@ public class SubSets {
         }});
       }
       for (List<Integer> curr : newSubsets) {
-        result.add(curr);
+        if(!result.contains(curr)){
+          result.add(curr);
+        }
       }
     }
     return result;
