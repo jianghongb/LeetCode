@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
  *
@@ -66,7 +68,7 @@ public class BinaryTreeRightSideView199 {
           queue.add(curr.right);
         }
       }
-      res.add(curr.val);
+      res.add(curr.val); // 永远加入当前层最右侧节点的值
     }
     return res;
   }
@@ -97,6 +99,27 @@ public class BinaryTreeRightSideView199 {
     }
     if (root.left != null) {
       helper(root.left, level);
+    }
+  }
+
+  @Test
+  void test() {
+    TreeNode root = new TreeNode(1);
+
+    TreeNode l = new TreeNode(2);
+    TreeNode r = new TreeNode(3);
+    TreeNode ll = new TreeNode();
+    TreeNode lr = new TreeNode(5);
+    l.right = lr;
+    TreeNode rl = new TreeNode();
+    TreeNode rr = new TreeNode(4);
+    r.right = rr;
+    root.left = l;
+    root.right = r;
+
+    List<Integer> integers = rightSideView2(root);
+    for (Integer i : integers) {
+      System.out.print(i + ", ");
     }
   }
 

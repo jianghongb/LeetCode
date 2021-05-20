@@ -1,5 +1,9 @@
 package com.leetcode.tree;
 
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
 /**
  * Given the root of a binary tree, return the length of the diameter of the tree.
  *
@@ -24,7 +28,6 @@ package com.leetcode.tree;
  */
 
 // Definition for a binary tree node.
-
 
 public class DiameterBinaryTree543 {
 
@@ -75,5 +78,24 @@ public class DiameterBinaryTree543 {
     //Height of a node is the max b/w left & right node +1(one egde inclusive)
     return 1 + Math.max(left, right);
 
+  }
+
+  @Test
+  void test() {
+    TreeNode root = new TreeNode(1);
+
+    TreeNode l = new TreeNode(2);
+    TreeNode r = new TreeNode(3);
+    TreeNode ll = new TreeNode(4);
+    TreeNode lr = new TreeNode(5);
+    l.right = lr;
+    l.left = ll;
+    TreeNode rl = new TreeNode();
+    TreeNode rr = new TreeNode(4);
+    //    r.right = rr;
+    root.left = l;
+    root.right = r;
+
+    System.out.print(diameterOfBinaryTree(root));
   }
 }

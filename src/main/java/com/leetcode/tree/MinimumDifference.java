@@ -1,7 +1,11 @@
 package com.leetcode.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Given the root of a Binary Search Tree (BST), return the minimum absolute difference between the values of any two different nodes in the tree.
+ * Given the root of a Binary Search Tree (BST), return the minimum absolute difference
+ * between the values of any two different nodes in the tree.
  *
  *
  *
@@ -42,5 +46,32 @@ public class MinimumDifference {
     }
     prev = root.val;
     inorder(root.right);
+  }
+
+  /**
+   *  中序遍历整个BST 树，得到一个有序数组，然后找到数组中最小的任意两数字之差
+   * @param root
+   * @return
+   */
+  public int getMinimumDifference2(TreeNode root) {
+    // BST - inorder traversal representation
+    List<Integer> list = new ArrayList<>();
+    inOrderTraversal(root, list);
+    int min = Integer.MAX_VALUE;
+    int length = list.size();
+    int a = 0, b = 0;
+    for(int i = 0; i < length - 1; i++){
+      a = list.get(i);
+      b = list.get(i+1);
+      min = Math.min(min, Math.abs(a-b));
+    }
+    return min;
+  }
+
+  private void inOrderTraversal(TreeNode root, List<Integer> list){
+    if(root == null) return;
+    inOrderTraversal(root.left, list);
+    list.add(root.val);
+    inOrderTraversal(root.right, list);
   }
 }

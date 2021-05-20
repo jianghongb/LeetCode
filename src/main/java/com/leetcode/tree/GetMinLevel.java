@@ -49,10 +49,10 @@ public class GetMinLevel {
     }
     int depth = Integer.MAX_VALUE;
     if (root.left != null) {
-      depth = run(root.left);
+      depth = run2(root.left);
     }
     if (root.right != null) {
-      int temp = run(root.right);
+      int temp = run2(root.right);
       if (temp < depth) {
         depth = temp;
       }
