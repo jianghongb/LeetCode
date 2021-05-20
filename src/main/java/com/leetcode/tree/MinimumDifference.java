@@ -25,6 +25,8 @@ import java.util.List;
  *
  * The number of nodes in the tree is in the range [2, 104].
  * 0 <= Node.val <= 105
+ *
+ * the same as 783 https://leetcode.com/problems/minimum-distance-between-bst-nodes/
  */
 public class MinimumDifference {
 

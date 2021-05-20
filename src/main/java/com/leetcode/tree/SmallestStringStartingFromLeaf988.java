@@ -17,12 +17,20 @@ import java.util.Queue;
  *
  *
  * Example 1:
- *
+ * a
+ * /   \
+ * b     c
+ * / \   / \
+ * d  e  d  e
  * Input: [0,1,2,3,4,3,4]
  * Output: "dba"
  *
  * Example 2:
- *
+ * z
+ * /   \
+ * b     d
+ * / \   / \
+ * b  d  a  c
  * Input: [25,1,3,1,3,0,2]
  * Output: "adz"
  *
@@ -39,56 +47,6 @@ import java.util.Queue;
  * Each node in the tree will have a value between 0 and 25.
  */
 public class SmallestStringStartingFromLeaf988 {
-
-  /**
-   * 思路： 把所有的叶子节点按照层序顺序存储在List数组中，然后从后向前遍历数组，获取数组中最小的叶子节点，再依次向前遍历，直到遍历到根节点
-   * 思路有个缺点： 不能比较长路径和短路径
-   *
-   * @param root
-   * @return
-   */
-  public String smallestFromLeaf(TreeNode root) {
-
-    if (null == root) {
-      return null;
-    }
-    List<List<TreeNode>> nodes = new ArrayList<>();
-    Queue<TreeNode> queue = new LinkedList<>();
-
-    queue.offer(root);
-    List<TreeNode> list = new ArrayList<>();
-    list.add(root);
-    nodes.add(list);
-    while (!queue.isEmpty()) {
-      int size = queue.size();
-      list = new ArrayList<>();
-      for (int i = 0; i < size; i++) {
-        TreeNode node = queue.poll();
-        if (node.left != null) {
-          queue.add(node.left);
-          list.add(node.left);
-
-        }
-        if (node.right != null) {
-          queue.add(node.right);
-          list.add(node.right);
-        }
-      }
-      nodes.add(list);
-    }
-    int min = Integer.MAX_VALUE;
-
-    for (int i = nodes.size() - 1; i >= 0; i--) {
-      List<TreeNode> nodeList = nodes.get(i);
-      for (TreeNode node : nodeList) {
-        if (node.val < min) {
-          min = node.val;
-        }
-
-      }
-    }
-    return "";
-  }
 
   String ans = "~";
 

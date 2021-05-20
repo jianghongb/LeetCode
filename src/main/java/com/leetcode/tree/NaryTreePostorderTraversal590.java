@@ -16,6 +16,12 @@ import java.util.Stack;
  *
  *
  * Example 1:
+ *         1
+ *      /  \  \
+ *     3   2   4
+ *    / \
+ *   5   6
+ *
  *
  * Input: root = [1,null,3,2,4,null,5,6]
  * Output: [1,3,5,6,2,4]
@@ -36,8 +42,9 @@ public class NaryTreePostorderTraversal590 {
   public List<Integer> postorder(Node root) {
     HashMap<Node, Boolean> map = new HashMap<>();
     List<Integer> post = new ArrayList<>();
-    if (root == null)
+    if (root == null) {
       return post;
+    }
     Stack<Node> st = new Stack<>();
     st.push(root);
     while (!st.isEmpty()) {
