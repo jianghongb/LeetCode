@@ -34,12 +34,14 @@ import com.leetcode.list.ListNode;
  *
  * Constraints:
  *
- *     The number of nodes in head is in the range [0, 2 * 104].
- *     -105 <= Node.val <= 105
+ * The number of nodes in head is in the range [0, 2 * 104].
+ * -105 <= Node.val <= 105
  */
 public class ConvertSortedListtoBST {
+
   // 本题思路是快慢指针
   public TreeNode sortedArrayToBST(ListNode head) {
+    return null;
 
   }
 }
