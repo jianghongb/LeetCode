@@ -1,7 +1,10 @@
 package com.leetcode.array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
@@ -44,5 +47,35 @@ public class TwoSum1 {
         }
 
         return new int[]{};
+    }
+
+    public int[] twoSum3(int[] nums, int target) {
+        if(nums == null || nums.length ==0){
+            return nums;
+        }
+
+        Arrays.sort(nums);
+        int numIndex1 = 0, numIndex2 = -1;
+        int i = 1;
+        while(i < nums.length){
+            numIndex2 = i;
+            if((nums[numIndex1] + nums[numIndex2]) == target){
+                return new int[]{numIndex1, numIndex2};
+            }
+            if((nums[numIndex1] + nums[numIndex2]) < target){
+                numIndex1 = numIndex2;
+            }
+            i++;
+        }
+        return new int[]{};
+    }
+
+    @Test
+    void test(){
+        int[] nums = { 3,2,4 };
+        int target = 6;
+        for (int i : twoSum3(nums, target)) {
+            System.out.println(i);
+        }
     }
 }
