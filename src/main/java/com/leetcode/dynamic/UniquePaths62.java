@@ -62,6 +62,22 @@ public class UniquePaths62 {
     return dp[m - 1][n - 1];
   }
 
+  // DFS 暴力解法 ，但是超时了。。。。
+  public int uniquePaths2(int m, int n) {
+    return dfs(1, 1, m, n);
+  }
+
+  private int dfs(int i, int j, int m, int n) {
+    if (i > m || j > n) {
+      return 0;
+    }
+
+    if (i == m && j == n) {
+      return 1;
+    }
+    return dfs(i + 1, j, m, n) + dfs(i, j + 1, m, n);
+  }
+
   @Test
   void test() {
     int m = 3, n = 7;
