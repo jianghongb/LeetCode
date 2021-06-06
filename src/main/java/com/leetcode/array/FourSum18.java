@@ -39,15 +39,38 @@ public class FourSum18 {
   public List<List<Integer>> fourSum2(int[] nums, int target) {
 
     List<List<Integer>> res = new ArrayList<>();
-
     if (nums == null || nums.length == 0) {
       return res;
     }
     Arrays.sort(nums);
-    int index = 0;
-    int k = 4;
     for (int i = 0; i < nums.length; i++) {
-
+      if (i > 0 && nums[i - 1] == nums[i]) {
+        continue;
+      }
+      for (int j = i + 1; j < nums.length; j++) {
+        if (j > i + 1 && nums[j - 1] == nums[j]) {
+          continue;
+        }
+        int left = j + 1, right = nums.length - 1;
+        while (left < right) {
+          int sum = nums[i] + nums[j] + nums[left] + nums[right];
+          if (sum > target) {
+            right--;
+          } else if (sum < target) {
+            left++;
+          } else {
+            res.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+            while (left < right && nums[left] == nums[left + 1]) {
+              left++;
+            }
+            while (right > left && nums[right] == nums[right - 1]) {
+              right--;
+            }
+            right--;
+            left++;
+          }
+        }
+      }
     }
 
     return res;
@@ -88,11 +111,9 @@ public class FourSum18 {
       int sum = nums[lo] + nums[hi];
       if (sum < target || (lo > start && nums[lo] == nums[lo - 1])) {
         ++lo;
-      }
-      else if (sum > target || (hi < nums.length - 1 && nums[hi] == nums[hi + 1])) {
+      } else if (sum > target || (hi < nums.length - 1 && nums[hi] == nums[hi + 1])) {
         --hi;
-      }
-      else {
+      } else {
         res.add(Arrays.asList(nums[lo++], nums[hi--]));
       }
     }
