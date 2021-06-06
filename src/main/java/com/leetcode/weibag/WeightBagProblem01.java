@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
  */
 public class WeightBagProblem01 {
 
-  public int[][] weightBag(int[] weight, int[] value, int bagWeight) {
+  public int weightBag(int[] weight, int[] value, int bagWeight) {
     int[][] dp = new int[weight.length][bagWeight + 1];
 
     for (int i = bagWeight; i >= weight[0]; i--) {
@@ -23,7 +23,20 @@ public class WeightBagProblem01 {
         }
       }
     }
-    return dp;
+    return dp[dp.length - 1][dp[0].length - 1];
+  }
+
+  public int weightBag2(int[] weight, int[] value, int bagWeight) {
+    int[] dp = new int[bagWeight + 1];
+
+    for (int i = 0; i < weight.length; i++) {
+      for (int j = bagWeight; j >= weight[i]; j--) {
+        System.out.println(dp[j] + " ," + (dp[j - weight[i]] + value[i]));
+        dp[j] = Math.max(dp[j], dp[j - weight[i]] + value[i]);
+
+      }
+    }
+    return dp[bagWeight];
   }
 
   @Test
@@ -31,14 +44,7 @@ public class WeightBagProblem01 {
     int[] weight = { 1, 3, 4 };
     int[] value = { 15, 20, 30 };
     int bagWeight = 4;
-    int[][] dp = weightBag(weight, value, bagWeight);
-    for (int i = 0; i < dp.length; i++) {
-      for (int j = 0; j < dp[0].length; j++) {
-        System.out.print(dp[i][j]);
-      }
-      System.out.println();
-    }
-    System.out.println(dp[dp.length - 1][dp[0].length - 1]);
+    System.out.println(weightBag2(weight, value, bagWeight));
   }
 
 }
