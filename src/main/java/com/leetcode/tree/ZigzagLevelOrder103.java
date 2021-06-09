@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Given the root of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
@@ -86,9 +89,8 @@ public class ZigzagLevelOrder103 {
       } else {
         ret.get(l).add(node.val);
       }
-      dfs(node.left, l+1, ret);
-      dfs(node.right, l+1, ret);
+      dfs(node.left, l + 1, ret);
+      dfs(node.right, l + 1, ret);
     }
   }
-
 }
