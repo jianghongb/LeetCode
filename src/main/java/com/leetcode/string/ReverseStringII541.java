@@ -27,6 +27,35 @@ package com.leetcode.string;
  */
 public class ReverseStringII541 {
 
+  /**
+   * https://mp.weixin.qq.com/s/pzXt6PQ029y7bJ9YZB2mVQ
+   *
+   * @param s
+   * @param k
+   * @return
+   */
+  public String reverseStr4(String s, int k) {
+    StringBuilder res = new StringBuilder();
+    int start = 0, end = s.length();
+
+    while (start < end) {
+
+      StringBuilder tmp = new StringBuilder();
+
+      int firstK = (start + k) < s.length() ? start + k : s.length();
+      int secondK = (start + 2 * k) < s.length() ? start + 2 * k : s.length();
+
+      tmp.append(s, start, firstK);
+      res.append(tmp.reverse());
+
+      if (firstK < secondK) {
+        res.append(s, firstK, secondK);
+      }
+      start += 2 * k;
+    }
+    return res.toString();
+  }
+
   public static String reverseStr(String s, int k) {
     if (k == 1)
       return s;
