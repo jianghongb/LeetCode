@@ -35,6 +35,15 @@ package com.leetcode.array;
  */
 public class TargetSum494 {
 
+  /**
+   * https://mp.weixin.qq.com/s?__biz=MzUxNjY5NTYxNA==&mid=2247486709&idx=1&sn=75f1f43d96dbd1c5c3e281b8963e3c50&scene=21#wechat_redirect
+   *
+   * 时间复杂度O(n * m)，n为正数个数，m为背包容量
+   * 空间复杂度：O(m) m为背包容量
+   * @param nums
+   * @param target
+   * @return
+   */
   public int findTargetSumWays(int[] nums, int target) {
     int sum = 0;
     for (int i : nums) {
