@@ -42,6 +42,7 @@ import org.junit.jupiter.api.Test;
  */
 public class CoinChangeII518 {
 
+  // 求组合
   public int change(int amount, int[] coins) {
 
     int[] dp = new int[amount + 1];
@@ -49,22 +50,6 @@ public class CoinChangeII518 {
     for (int i = 0; i < coins.length; i++) {
       for (int j = coins[i]; j <= amount; j++) {
         dp[j] += dp[j - coins[i]];
-      }
-      printDp(dp);
-    }
-    return dp[amount];
-
-  }
-
-  public int change2(int amount, int[] coins) {
-
-    int[] dp = new int[amount + 1];
-    dp[0] = 1;
-    for (int j = 0; j <= amount; j++) {
-      for (int i = 0; i < coins.length; i++) {
-        if (coins[i] <= j) {
-          dp[j] += dp[j - coins[i]];
-        }
       }
       printDp(dp);
     }
@@ -85,6 +70,6 @@ public class CoinChangeII518 {
   void test() {
     int amount = 5;
     int[] conins = { 1, 2, 5 };
-    System.out.println(change2(amount, conins));
+    System.out.println(change(amount, conins));
   }
 }

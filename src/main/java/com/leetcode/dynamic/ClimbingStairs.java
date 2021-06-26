@@ -62,11 +62,11 @@ public class ClimbingStairs {
   }
 
   public int climbStairs2(int n) {
-    int memo[] = new int[n + 1];
+    int[] memo = new int[n + 1];
     return climb_Stairs(0, n, memo);
   }
 
-  public int climb_Stairs(int i, int n, int memo[]) {
+  public int climb_Stairs(int i, int n, int[] memo) {
     if (i > n) {
       return 0;
     }
@@ -78,5 +78,24 @@ public class ClimbingStairs {
     }
     memo[i] = climb_Stairs(i + 1, n, memo) + climb_Stairs(i + 2, n, memo);
     return memo[i];
+  }
+
+  /**
+   * 动态规划 求排列
+   *
+   * @param n
+   * @return
+   */
+  public int climbStairs4(int n) {
+    int[] dp = new int[n + 1];
+    dp[0] = 1;
+    for (int i = 1; i <= n; i++) {
+      for (int j = 1; j <= 2; j++) {
+        if (i >= j) {
+          dp[i] += dp[i - j];
+        }
+      }
+    }
+    return dp[n];
   }
 }
