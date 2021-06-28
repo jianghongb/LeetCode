@@ -65,7 +65,8 @@ public class WordBreak139 {
       return true;
     }
 
-    if (memo[currIndex] != null) return memo[currIndex];
+    if (memo[currIndex] != null)
+      return memo[currIndex];
 
     for (String word : words) {
       if (s.startsWith(word, currIndex)) {
@@ -80,10 +81,39 @@ public class WordBreak139 {
     return false;
   }
 
+  /**
+   * Time: O(N^N) since each time it has at most N choices and the depth (problem size) is N. (this is an upper bound)
+   * Space: O(N) (string length and call stack depth)
+   * <p>
+   *   Time Limit Exceeded
+   * </p>
+   *
+   * @param s
+   * @param wordDict
+   * @return
+   */
+  public boolean wordBreak3(String s, List<String> wordDict) {
+    return backtracing(s, wordDict, 0);
+  }
+
+  private boolean backtracing(String s, List<String> wordDict, int startIdx) {
+    if (s.length() == startIdx) {
+      return true;
+    }
+
+    for (int i = startIdx; i < s.length(); i++) {
+        String tmp = s.substring(startIdx, i+1);
+        if(wordDict.contains(tmp) && backtracing(s, wordDict, i+1)){
+          return true;
+        }
+    }
+    return false;
+  }
+
   @Test
   void test() {
     String s = "catsandog";
-    List<String> wordDict = Arrays.asList("cats","dog","sand","and","cat");
+    List<String> wordDict = Arrays.asList("cats", "dog", "sand", "and", "cat");
     System.out.println(wordBreak(s, wordDict));
   }
 
