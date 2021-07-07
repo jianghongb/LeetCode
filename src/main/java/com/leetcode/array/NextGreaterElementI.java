@@ -1,5 +1,6 @@
 package com.leetcode.array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -81,11 +82,34 @@ public class NextGreaterElementI {
     return findNums;
   }
 
+  public int[] nextGreaterElement3(int[] findNums, int[] nums) {
+    int[] res = new int[findNums.length];
+    Arrays.fill(res, -1);
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < findNums.length; i++) {
+      map.put(findNums[i], i);
+
+    }
+    Stack<Integer> stack = new Stack<>();
+    stack.push(0);
+    for (int i = 1; i < nums.length; i++) {
+      while (!stack.isEmpty() && nums[i] > nums[stack.peek()]) {
+        if (map.containsKey(nums[stack.peek()])) {
+          int idx = map.get(nums[stack.peek()]);
+          res[idx] = nums[i];
+        }
+        stack.pop();
+      }
+      stack.push(i);
+    }
+    return res;
+  }
+
   @Test
   void test() {
     int[] nums1 = { 4, 1, 2 };
     int[] nums2 = { 1, 3, 4, 2 };
-    int[] result = nextGreaterElement2(nums1, nums2);
+    int[] result = nextGreaterElement3(nums1, nums2);
     for (int i : result) {
       System.out.print(i + ", ");
 
