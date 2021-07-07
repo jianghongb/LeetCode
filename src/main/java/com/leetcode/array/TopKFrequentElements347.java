@@ -188,7 +188,7 @@ public class TopKFrequentElements347 {
   void test() {
     int[] nums = { 5, 3, 1, 1, 1, 3, 73, 1 };
     int k = 1;
-    int[] topKFrequent = topKFrequent(nums, k);
+    int[] topKFrequent = topKFrequent2(nums, k);
     for (int i = 0; i < topKFrequent.length; i++) {
       System.out.print(topKFrequent[i] + ",");
     }
