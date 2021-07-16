@@ -6,8 +6,8 @@ import java.util.Map;
 
 class Node {
 
-  public int key, val;
-  public Node next, prev;
+  int key, val;
+  Node next, prev;
 
   public Node(int k, int v) {
     this.key = k;
